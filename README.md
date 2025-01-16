@@ -52,7 +52,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
 [more info on github provider configuration](https://authjs.dev/getting-started/providers/github)
 
-[for more info](https://authjs.dev/getting-started)
+[for more info](https://authjs.dev/getting-started/)
 
 
 
