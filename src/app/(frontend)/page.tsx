@@ -2,8 +2,14 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div className='heading'>
+    <>
+    <section className='pink_container'>
+      < h1 className='heading'>
       home
-    </div>
+      </h1>
+    </section>
+      
+    </>
+
   )
 }
