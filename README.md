@@ -110,3 +110,4 @@ action={async() => {
 
 
 [github](https://github.com/adrianhajdin/yc_directory)
+[figma](https://www.figma.com/design/TMGW6rLGene3cqHb4Kilz5/Pitch-Startup-App?node-id=62001-4701&t=fnfkCMRamSnARpuP-0)
