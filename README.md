@@ -52,6 +52,59 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
 [more info on github provider configuration](https://authjs.dev/getting-started/providers/github)
 
+# How to use next auth
+
+```javascript
+import { auth,signIn,signOut } from '@/auth'
+```
+- `signin` to sign in / login the user based with respective auth
+- `signout` to logout the user
+- `auth` give the info on current sign in user if have any
+
+some example
+1. `signIn()`
+```javascript
+<form //use form for rendering the client component at server typically button with onClick
+action={async()=>{
+  'use server'
+  await signIn()  //to login the user
+}}>
+  <button type='submit'>
+     <span>login</span>
+  </button>
+</form>
+```
+2. `signOut()`
+```javascript
+<form   //use form for rendering the client component at server typically button with onClick
+action={async() => {
+  'use server';
+  await signOut()   //logout the user
+}}>
+  <button type="submit">
+    <span>logout</span>
+  </button>
+</form>
+```
+3. `auth()`
+```javascript
+  const session = await auth() 
+  consol.log(session)
+   /**  
+    in case of github session contain following info :
+      {
+        user: {
+          name: 'github_username',
+          email: 'github_email',
+          image: 'github_profileImage_url',
+        },
+        expires: '2025-02-15T17:25:50.431Z'
+      }
+  */ 
+ ```
+
+
+
 [for more info](https://authjs.dev/getting-started/)
 
 
