@@ -1,8 +1,7 @@
 import React from 'react'
 import SearchFormResetButton from './SearchFormResetButton'
 
-export default function SearchForm() {
-    const query = 'test'
+export default function SearchForm({query}:{query?:string}) {
 
     
   return (
