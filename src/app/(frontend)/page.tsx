@@ -9,12 +9,12 @@ export default async function Page({ searchParams }: { searchParams: { query?: s
   const post = [{
     _createdAt:new Date(),
     views:55,
-    author:{ _id : 1},
+    author:{ _id : 1,    name:'yadnesh'},
     _id:1,
     image:'/logo.png',
     category:'robot',
     description:'this is a description',
-    title:'this is a title'
+    title:'this is a title',
   }]
 
   return (
