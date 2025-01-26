@@ -117,7 +117,7 @@ action={async() => {
 1. create the database in sanity
 2. copy the CLI command and run on to the terminal
 3. it will ask you for authorization just log in with the same account you did at the time of database creation 
-4. then it will ask you some question just answer most of them yes
+4. then it will ask you some question just answer most of them yes, there are just two question you need to ans differently which are where you wanna place `/studio` folder ( go with default path ) or which template you wanna use ( there is only 2 templates in sanity in this project we are going with clean template )  
 5. install sanity
 ```bash
 npm install next-sanity@canary
@@ -233,6 +233,7 @@ export const QUERY = defineQuery(`
 
 3. fetching data  from sanity studio
 ```typescript
+import { QUERY } from '@/sanity/lib/queries';
 import { client } from '@/sanity/lib/client';
 
 const data = await client.fetch(QUERY)
