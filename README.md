@@ -155,6 +155,55 @@ for creating sanity schema
 - structure.ts:\
 define how to arrange your schema
 
+## how to create sanity schemas
+1. create schema file into the schemaType folder with following syntax
+```typescript
+import { defineField, defineType } from "sanity";
+
+export const schema_name = defineType( 
+    {
+        name: 'name',
+        title: 'Title',
+        type: 'type_of_schema',
+        fields: [
+            defineField({
+                name: 'felidName',
+                type:'felidType', // eg., string,number,url,etc
+                validation:(Rule) => {} //can also add validations(optional)
+            }),
+            //can add as many felid as you want
+            
+        ],
+        preview: {
+            select: {
+                title: 'name',
+            }
+        }
+    }
+)
+```
+2. import that schema into index.ts file
+```typescript
+import { type SchemaTypeDefinition } from 'sanity'
+import { schema_name } from './schema_name' //importing the defined schema
+
+export const schema: { types: SchemaTypeDefinition[] } = {
+  types: [schema_name], //pass that schema here
+}
+```
+3. descried it into the structure.ts
+```typescript
+import type {StructureResolver} from 'sanity/structure'
+
+export const structure: StructureResolver = (S) =>
+  S.list()
+    .title('Content')
+    .items([
+      S.documentTypeListItem('name').title('Title'),  //from your schema
+    ])
+```
+##### now you can see your schema into sanity studio
+
 
 
 
