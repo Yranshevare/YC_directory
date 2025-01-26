@@ -107,7 +107,7 @@ action={async() => {
 
 [for more info](https://authjs.dev/getting-started/)
 
-
+---
 # Sanity
 
 [Sanity](https://www.sanity.io/) is use for a real-time datastore for structured content, and supporting APIs for assets, user management, and more.
