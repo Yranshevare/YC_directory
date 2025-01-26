@@ -108,6 +108,61 @@ action={async() => {
 [for more info](https://authjs.dev/getting-started/)
 
 
+# Sanity
+
+[Sanity](https://www.sanity.io/) is use for a real-time datastore for structured content, and supporting APIs for assets, user management, and more.
+
+## how to integrate sanity 
+
+1. create the database in sanity
+2. copy the CLI command and run on to the terminal
+3. it will ask you for authorization just log in with the same account you did at the time of database creation 
+4. then it will ask you some question just answer most of them yes
+5. install sanity
+```bash
+npm install next-sanity@canary
+```
+6. visit `Localhost:3000/studio` and signin with same account   to use sanity studio 
+
+## sanity file structure
+will add following files
+```
+studio/
+    └──[[...tool]]/
+          └──page.tsx
+sanity/
+    ├──lib/
+    |    ├──client.ts
+    |    └──image.ts
+    ├── schemaType/
+    |    └── inidex.ts
+    ├── env.ts
+    └── structure.ts
+sanity.cli.ts
+sanity.config.ts
+```
+
+- sanity.cli.ts:\
+this is the config file to perform sanity oration via sanity cli
+- sanity.config.ts:\
+config file for sanity studio and connecting it with specific project id, dataset, schema and to add some plugin
+- client.ts:\
+it is read client file for fetching data through query
+- image.ts:\
+image url builder for images uploaded on sanity studio
+- index.ts:\
+for creating sanity schema
+- structure.ts:\
+define how to arrange your schema
+
+
+
+
+
+
+
 
 [github](https://github.com/adrianhajdin/yc_directory)
 [figma](https://www.figma.com/design/TMGW6rLGene3cqHb4Kilz5/Pitch-Startup-App?node-id=62001-4701&t=fnfkCMRamSnARpuP-0)
+
+[sanity](https://www.sanity.io/manage/personal/project/pm5mfr1f)
