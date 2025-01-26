@@ -204,6 +204,40 @@ export const structure: StructureResolver = (S) =>
 ```
 ##### now you can see your schema into sanity studio
 
+## To run the query 
+
+1. create the queries.ts file into to the lib folder where you can write the sanity query ( [GROQ Query](https://www.sanity.io/docs/how-queries-work) )
+2. this is how to write the query
+```typescript
+import { defineQuery } from "next-sanity";
+
+export const QUERY = defineQuery(`
+    *[_type == 'startup' && defined(slug.current)] | order(_createdAt desc){
+      _id,
+      title,
+      slug,
+      _createdAt,
+      category,
+      image,
+      author->{
+        name,
+        bio,
+        _id
+      },
+      views,
+      decryption
+    }
+`);
+```
+
+
+3. fetching data  from sanity studio
+```typescript
+import { client } from '@/sanity/lib/client';
+
+const data = await client.fetch(QUERY)
+console.log(JSON.stringify(data))
+```
 
 
 
@@ -211,7 +245,7 @@ export const structure: StructureResolver = (S) =>
 
 
 
-[github](https://github.com/adrianhajdin/yc_directory)
-[figma](https://www.figma.com/design/TMGW6rLGene3cqHb4Kilz5/Pitch-Startup-App?node-id=62001-4701&t=fnfkCMRamSnARpuP-0)
 
+[github](https://github.com/adrianhajdin/yc_directory)\
+[figma](https://www.figma.com/design/TMGW6rLGene3cqHb4Kilz5/Pitch-Startup-App?node-id=62001-4701&t=fnfkCMRamSnARpuP-0)\
 [sanity](https://www.sanity.io/manage/personal/project/pm5mfr1f)
