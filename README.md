@@ -143,9 +143,9 @@ sanity.config.ts
 ```
 
 - sanity.cli.ts:\
-this is the config file to perform sanity oration via sanity cli
+this is the config file to perform sanity operation via sanity cli
 - sanity.config.ts:\
-config file for sanity studio and connecting it with specific project id, dataset, schema and to add some plugin
+config file for sanity studio and connecting that studio with database by matching specific project id, dataset, schema and to add some plugin
 - client.ts:\
 it is read client file for fetching data through query
 - image.ts:\
@@ -174,7 +174,7 @@ export const schema_name = defineType(
             //can add as many felid as you want
             
         ],
-        preview: {
+        preview: {    //this is optional
             select: {
                 title: 'name',
             }
@@ -191,7 +191,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   types: [schema_name], //pass that schema here
 }
 ```
-3. descried it into the structure.ts
+3. arrange them into the structure.ts
 ```typescript
 import type {StructureResolver} from 'sanity/structure'
 
