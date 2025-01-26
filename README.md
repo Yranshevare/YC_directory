@@ -205,6 +205,7 @@ export const structure: StructureResolver = (S) =>
 ##### now you can see your schema into sanity studio
 
 ## To run the query 
+#### you can test your sanity queries in vision section of your sanity studio
 
 1. create the queries.ts file into to the lib folder where you can write the sanity query ( [GROQ Query](https://www.sanity.io/docs/how-queries-work) )
 2. this is how to write the query
