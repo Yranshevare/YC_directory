@@ -2,20 +2,25 @@ import React from 'react'
 import SearchForm from '@/components/SearchForm'
 import { title } from 'process';
 import StartupCard from '@/components/startupCard';
+import { client } from '@/sanity/lib/client';
+import { STARTUP_QUERY } from '@/sanity/lib/queries';
 
 export default async function Page({ searchParams }: { searchParams: { query?: string } }) {
   const query = (await searchParams).query || '';
 
-  const post = [{
-    _createdAt:new Date(),
-    views:55,
-    author:{ _id : 1,    name:'yadnesh'},
-    _id:1,
-    image:'/logo.png',
-    category:'robot',
-    description:'this is a description',
-    title:'this is a title',
-  }]
+  const post = await client.fetch(STARTUP_QUERY)
+  console.log(JSON.stringify(post))
+
+  // const post = [{
+  //   _createdAt:new Date(),
+  //   views:55,
+  //   author:{ _id : 1,    name:'yadnesh'},
+  //   _id:1,
+  //   image:'/logo.png',
+  //   category:'robot',
+  //   description:'this is a description',
+  //   title:'this is a title',
+  // }]
 
   return (
     <>
