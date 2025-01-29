@@ -257,6 +257,34 @@ export const client = createClient({
 `useCdn: true` indicate that sanity will cash the data and only revalidate the data only after the 60 have otherwise it will provide the cash data
 
 
+
+## how to pass argument 
+```ts
+const params = {search: query || null}
+
+const {data:post} = await sanityFetch({query:STARTUP_QUERY,params})  //can pass along with thw fetch request
+```
+```ts
+import { defineQuery } from "next-sanity";
+//pass the argument along the array 
+export const STARTUP_QUERY = defineQuery(`
+    *[_type == 'startup' && defined(slug.current) && !defined($search) || category match $search || author->name match $search || title match $search] | order(_createdAt desc){
+      _id,
+      title,
+      slug,
+      _createdAt,
+      category,
+      image,
+      author->{
+        name,
+        bio,
+        _id
+      },
+      views,
+      decryption
+    }
+`);
+```
 ### sanity live feature
 to fetch newly added data with out need of refresh
 1. `sanity/lib/live:`
