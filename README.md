@@ -241,7 +241,52 @@ const data = await client.fetch(QUERY)
 console.log(JSON.stringify(data))
 ```
 
+4. in `sanity/lib/client:`
+```typescript
+import { createClient } from 'next-sanity'
 
+import { apiVersion, dataset, projectId } from '../env'
+
+export const client = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true, // Set to false if statically generating pages, using ISR(incremental static generation) or tag-based revalidation
+})
+```
+`useCdn: true` indicate that sanity will cash the data and only revalidate the data only after the 60 have otherwise it will provide the cash data
+
+
+### sanity live feature
+to fetch newly added data with out need of refresh
+1. `sanity/lib/live:`
+```ts
+import { defineLive } from "next-sanity";
+import { client } from './client'
+
+export const { sanityFetch, SanityLive } = defineLive({ 
+  client: client.withConfig({ 
+    apiVersion: 'vX'
+  }) 
+});
+```
+2. fetching the data
+```ts
+import { sanityFetch, SanityLive } from '@/sanity/lib/live';
+
+const {data:post} = await sanityFetch({query:STARTUP_QUERY})
+console.log(post)
+```
+
+3. use sanityLive component at the bottom your component
+```tsx
+return(
+  <>
+    {/*your code*/}
+    <sanityLive/>
+  </>
+)
+```
 
 
 
