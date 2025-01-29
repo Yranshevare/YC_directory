@@ -17,3 +17,21 @@ export const STARTUP_QUERY = defineQuery(`
       decryption
     }
 `);
+
+export const STARTUP_BY_ID_QUERY = defineQuery(`
+    *[_type == 'startup' && _id == $id][0]{
+      _id,
+      title,
+      slug,
+      _createdAt,
+      category,
+      image,
+      author -> {
+        name,bio,_id
+      },
+      views,
+      decryption,
+      pitch
+  
+    }
+`);
