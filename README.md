@@ -328,7 +328,7 @@ will cause some type related error to solve it run this command
 ```bash
 npm i --save-dev @types/markdown-it
 ```
-2. to use it in your code
+2. use this code in your code
 ```ts
 import markdownit from 'markdown-it'
 const md = markdownit()
