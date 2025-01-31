@@ -316,9 +316,29 @@ return(
 )
 ```
 
+---
+# rendering the markdown file using markdown-it package
+this package will convert your `md file into the HTML format`
+1. install the package
+```bash
+npm install markdown-it
+```
+will cause some type related error to solve it run this command
 
+```bash
+npm i --save-dev @types/markdown-it
+```
+2. to use it in your code
+```ts
+import markdownit from 'markdown-it'
+const md = markdownit()
+const result = md.render('# markdown content!');
+```
+if you `console.log(result)` the you'll get the `HTML` format `# markdown content!` which is written in `md` format
 
+### [for more info](https://www.npmjs.com/package/markdown-it)
 
+---
 
 
 [github](https://github.com/adrianhajdin/yc_directory)\
