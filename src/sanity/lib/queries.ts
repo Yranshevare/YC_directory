@@ -27,7 +27,7 @@ export const STARTUP_BY_ID_QUERY = defineQuery(`
       category,
       image,
       author -> {
-        name,bio,_id
+        name,bio,_id,image,username
       },
       views,
       decryption,
