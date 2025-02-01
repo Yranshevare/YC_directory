@@ -316,6 +316,47 @@ return(
 )
 ```
 
+## how to write in sanity
+1. generate the api token with editors permission selected and it to .env.local
+```.env
+SANITY_WRITE_TOKEN=api_token
+```
+2. export this token via `sanity/env.ts`
+```ts
+export const token = process.env.SANITY_WRITE_TOKEN  //add this into existing code
+```
+
+3. create the `write-client.ts` file into `sanity/lib` folder
+and copy past the code form `sanity/lib/client.ts` to this folder and update some code
+```ts
+import { createClient } from 'next-sanity'
+import 'server-only'    //make it server only 
+
+import { apiVersion, dataset, projectId ,token} from '../env' //import token
+
+export const writeClient = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true, // Set to false if statically generating pages
+  token //export token with write-client
+})
+
+// check if token is not there throw an error
+if(!writeClient.config().token){
+    throw new Error('write token does not found')
+}
+```
+
+4. now import the write client to run the write query on database
+```ts
+import { writeClient } from '@/sanity/lib/write-client'
+
+// update views patch: find the matching data set: update the data commit: save the changes
+const patchPromise = writeClient.patch(id).set({ views: views?.views + 1 }).commit();
+```
+
+
 ---
 # rendering the markdown file using markdown-it package
 this package will convert your `md file into the HTML format`
