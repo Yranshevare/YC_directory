@@ -35,3 +35,10 @@ export const STARTUP_BY_ID_QUERY = defineQuery(`
   
     }
 `);
+
+export const STARTUP_VIEW_QUERY = defineQuery(`
+    *[_type == 'startup' && _id == $id][0]{
+      _id,
+      views
+    }
+`);
