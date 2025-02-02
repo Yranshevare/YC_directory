@@ -381,6 +381,32 @@ if you `console.log(result)` the you'll get the `HTML` format `# markdown conten
 
 ---
 
+# how to add markdown editor
+1. install `@uiw/react-markdown-editor` npm package
+```bash
+npm i @uiw/react-markdown-editor
+```
+2. import markdownEditor component into desired component
+```ts
+import MarkdownEditor from '@uiw/react-markdown-editor';
+```
+3. initialize the markdown state
+```ts
+const [markdown, setMarkdown] = useState(`# This is a H1  \n## This is a H2  \n###### This is a H6`);
+``` 
+4. render the markdownEditor component with initialized states
+```ts
+<MarkdownEditor
+      value={markdown}
+      height="200px"
+      onChange={(value, viewUpdate) => setMarkdown(value)}
+    />
+```
+this will render a markdown editor which is similar to input felid with markdown feature
+
+### [for more info](https://www.npmjs.com/package/@uiw/react-markdown-editor)
+---
+
 
 [github](https://github.com/adrianhajdin/yc_directory)\
 [figma](https://www.figma.com/design/TMGW6rLGene3cqHb4Kilz5/Pitch-Startup-App?node-id=62001-4701&t=fnfkCMRamSnARpuP-0)\
