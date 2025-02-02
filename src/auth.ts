@@ -35,9 +35,9 @@
         
         return true; 
       },
-      jwt: async (token: any, profile: any) => {
-        if (profile?.id) {
-          const user = await client.withConfig({ useCdn: false }).fetch(AUTHOR_BY_GITHUB_ID_QUERY, { id: profile.id });
+      jwt: async (token: any) => {
+        if (token) {
+          const user = await client.withConfig({ useCdn: false }).fetch(AUTHOR_BY_GITHUB_ID_QUERY, { id: token?.token?.user?.id });
       
           if (user) {
             token.id = user?._id;
@@ -49,7 +49,8 @@
       session: async ({ session, token }: any) => {
         if (token?.token?.user?.id) {
           session = token?.token?.user;
-          session._id = token?.token?.account?.access_token
+          session.access_token = token?.token?.account?.access_token
+          session._id = token.id
           
         }
         return session;
