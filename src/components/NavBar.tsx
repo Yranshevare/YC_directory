@@ -6,6 +6,7 @@ import { auth,signIn,signOut } from '@/auth'
 export default async function NavBar() {
 
   const session = await auth()    //can get info on current user via session
+  // console.log("from navbar",session?.name)
   /**  
     session contain following info :
       {
@@ -40,8 +41,8 @@ export default async function NavBar() {
                   </button>
                 </form>
 
-                <Link href={`./user/${session.user.id}`}>
-                  <span>{session.user.name}</span>
+                <Link href={`./user/${session.id}`}>
+                  <span>{session.name}</span>
                 </Link>
               </>
             ) : (
