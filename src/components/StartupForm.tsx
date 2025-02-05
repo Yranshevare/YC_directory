@@ -9,6 +9,7 @@ import { formSchema } from '@/lib/vaidation';
 import { z } from 'zod';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { createPitch } from '@/lib/actions';
 
 export default function StartupForm() {
     const [pitch, setPitch] = useState(``);
@@ -28,18 +29,19 @@ export default function StartupForm() {
             }
             await formSchema.parseAsync(formValue)
             console.log(formValue)
-            // const results = await createIdea(prevState,formdata,pitch)
+            const results = await createPitch(prevState,formdata,pitch)
 
-            // console.log(results)
-            // if(results.status === 'success'){
-            //     toast({
-            //         title: "success",
-            //         description: "your startup pitch has been submitted",
-            //         variant: "destructive"
-            //     })
-            //     router.push(`/startup/${results.id}`)
-            // }
-            // return results
+            console.log(results)
+            if(results.status === 'success'){
+                toast({
+                    title: "success",
+                    description: "your startup pitch has been submitted",
+                    variant: "destructive"
+                })
+                // console.log(results.results._id)
+                router.push(`/startup/${results?.results?._id}`)
+            }
+            return results
         } catch (error) {
             if(error instanceof z.ZodError){
                 const zodError = error.flatten().fieldErrors;
