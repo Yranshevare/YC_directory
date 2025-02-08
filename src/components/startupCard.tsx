@@ -6,6 +6,7 @@ import React from 'react'
 import { Button } from './ui/button'
 
 export default function startupCard({post}:{post:StartupTypeCard}) {
+  console.log(post)
     const{_createdAt,views,author:{id: authorId,name},_id,title,image,category,description} = post
   return (
     <li className='startup-card group'>
