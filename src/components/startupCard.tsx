@@ -4,10 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
+import {StartupTypeCard} from '../types'
+import { Skeleton } from '@/components/ui/skeleton'
+import { author } from '@/sanity/schemaTypes/auther'
 
 export default function startupCard({post}:{post:StartupTypeCard}) {
-  console.log(post)
-    const{_createdAt,views,author:{id: authorId,name},_id,title,image,category,description} = post
+    const{_createdAt,views,author:{_id: authorId,name,image:authorImg},_id,title,image,category,description} = post
   return (
     <li className='startup-card group'>
       <div className='flex-between  '>
@@ -27,7 +29,7 @@ export default function startupCard({post}:{post:StartupTypeCard}) {
             </Link>
         </div>
         <Link href={`/user/${authorId}`}>
-            <Image src='https://placehold.co/48x48' alt='placeholder' width={48} height={48} className='rounded-full'/>
+            <Image src={authorImg} alt='placeholder' width={48} height={48} className='rounded-full'/>
         </Link>
       </div>
 
@@ -44,4 +46,19 @@ export default function startupCard({post}:{post:StartupTypeCard}) {
       </div>
     </li>
   )
+}
+
+
+export const StartupCardSkeleton = () => {
+    return (
+      <>
+      {
+        [0,1,2,3,4].map((index) => (
+          <li key={index} >
+            <Skeleton className='startup-card_skeleton'/>
+          </li>
+        ))
+      }
+      </>
+    )
 }

@@ -11,7 +11,8 @@ export const STARTUP_QUERY = defineQuery(`
       author->{
         name,
         bio,
-        _id
+        _id,
+        image
       },
       views,
       decryption
@@ -52,4 +53,34 @@ export const AUTHOR_BY_GITHUB_ID_QUERY = defineQuery(`
       username,
       bio
     }
+`);
+export const AUTHOR_BY_ID_QUERY = defineQuery(`
+    *[_type == 'author' && _id == $id][0]{
+      _id,
+      id,
+      name,
+      image,
+      username,
+      bio
+    }
+`);
+
+
+export const STARTUP_BY_AUTHOR_QUERY = defineQuery(`
+  *[_type == 'startup' && author._ref == $id] | order(_createdAt desc){
+    _id,
+    title,
+    slug,
+    _createdAt,
+    category,
+    image,
+    author->{
+      name,
+      bio,
+      _id
+      ,image
+    },
+    views,
+    decryption
+  }
 `);
