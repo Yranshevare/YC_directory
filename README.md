@@ -1,4 +1,18 @@
-# How to set up next auth:
+# Welcome to My Startup Blog!
+
+This is my first Next.js project, where I share insights, stories, and updates about the startup world. Whether you're an aspiring entrepreneur, a startup enthusiast, or just curious about the latest trends, this blog will feature a variety of posts on the most innovative startups, their journeys, and the challenges they face.
+
+Built with Next.js, the blog is designed to be fast, SEO-friendly, and responsive, ensuring a smooth experience for users on any device. I’ll be regularly posting articles and updates, so stay tuned as I dive deeper into the exciting world of startups!
+
+Thank you for visiting, and I hope you enjoy reading!
+## <a name="table">new things i learn</a>
+1. next auth
+2. Sanity
+3. rendering the markdown
+4. parallel fetching
+
+
+# <a name="next-auth">How to set up next auth:</a>
 ## 1. install next auth
 ```bash
 npm install next-auth@beta
@@ -406,6 +420,22 @@ this will render a markdown editor which is similar to input felid with markdown
 
 ### [for more info](https://www.npmjs.com/package/@uiw/react-markdown-editor)
 ---
+
+# parallel fetching
+ability to fetch multiple resources or data simultaneously, instead of sequentially, which can improve the performance and efficiency of data loading for a page.
+### Benefits of Parallel Fetching:
+1. **Faster loading:** Fetching data in parallel can significantly reduce the page load time, as all requests are made simultaneously rather than waiting for one to complete before the next starts.
+2. **Improved performance:** Especially useful when the page depends on multiple API endpoints, and you want to optimize how data is gathered.
+
+```ts
+  //parallel fetching
+    const [post, editorPost] = await Promise.all([
+      client.fetch(STARTUP_BY_ID_QUERY,{id}),
+      
+      client.fetch(PLAYLIST_BY_SLUG_QUERY,{slug:'editor-picks'})
+    ])
+```
+- `Promise.all()` is a method that accepts an array of promises and returns a single promise.
 
 
 [github](https://github.com/adrianhajdin/yc_directory)\

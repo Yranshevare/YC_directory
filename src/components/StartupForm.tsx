@@ -16,6 +16,7 @@ export default function StartupForm() {
     const [error,setError] = useState<Record<string,string>>({})
 
     const {toast} = useToast()
+    
 
     const router = useRouter()
     const handleFormSubmit = async (prevState: any,formdata:FormData) => {
