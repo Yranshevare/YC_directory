@@ -2,6 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { auth,signIn,signOut } from '@/auth'
+import { BadgePlus, LogOut } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 
 export default async function NavBar() {
 
@@ -20,7 +22,7 @@ export default async function NavBar() {
   */ 
   return (
     <header className='px-5 py-3 bg-white shadow-sm font-work-sans'>
-      <nav className='flex justify-between items-center'>
+      <nav className='flex justify-between items-center h-14'>
         <Link href="/">
           <Image src = '/logo.png' alt ='' width={144} height={30}/>
         </Link>
@@ -29,7 +31,8 @@ export default async function NavBar() {
             session && session?.user ? (
               <>
                 <Link href="/startup/create">
-                  <span>create</span>
+                  <span className='max-sm:hidden'>create</span>
+                  <BadgePlus className='sm:hidden size-6 text-primary'/>
                 </Link>
                 <form   //use form for rendering the client component at server typically button with onClick
                 action={async() => {
@@ -37,12 +40,17 @@ export default async function NavBar() {
                   await signOut()   //logout the user
                 }}>
                   <button type="submit">
-                    <span>logout</span>
+                    <span className='max-sm:hidden'>logout</span>
+                    <LogOut className='sm:hidden size-6 text-red-500'/>
                   </button>
                 </form>
 
                 <Link href={`./user/${session.id}`}>
-                  <span>{session.name}</span>
+                  {/* <Avatar className='size-10  '>
+                    <AvatarImage src={session.image} alt={session.name  || ""}/>
+                    <AvatarFallback>AV</AvatarFallback>
+                  </Avatar> */}
+                  <Image src={session.image} alt={session.name  || ""} width={40} height={40} className='rounded-full'/>
                 </Link>
               </>
             ) : (
