@@ -7,10 +7,10 @@ import { auth } from '@/auth';
 
 export default async function Page({ searchParams }: { searchParams: { query?: string } }) {
   const query = (await searchParams).query || '';
-  const params = {search: query || null}
+  const params = {search: query || null} 
 
   const session = await auth()
-  // console.log("from page",session?._id)
+  // console.log("from page",session)
 
   const {data:post} = await sanityFetch({query:STARTUP_QUERY,params})
 

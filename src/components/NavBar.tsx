@@ -3,12 +3,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { auth,signIn,signOut } from '@/auth'
 import { BadgePlus, LogOut } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 
 export default async function NavBar() {
 
   const session = await auth()    //can get info on current user via session
-  // console.log("from navbar",session?.name)
+  // console.log("from navbar",session)
   /**  
     session contain following info :
       {
@@ -50,7 +49,7 @@ export default async function NavBar() {
                     <AvatarImage src={session.image} alt={session.name  || ""}/>
                     <AvatarFallback>AV</AvatarFallback>
                   </Avatar> */}
-                  <Image src={session.image} alt={session.name  || ""} width={40} height={40} className='rounded-full'/>
+                  <Image src={session?.user?.image} alt={session.name  || ""} width={40} height={40} className='rounded-full'/>
                 </Link>
               </>
             ) : (
