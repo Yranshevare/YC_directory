@@ -9,6 +9,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { author } from '@/sanity/schemaTypes/auther'
 
 export default function startupCard({post}:{post:StartupTypeCard}) {
+  // console.log(post.author)
     const{_createdAt,views,author:{_id: authorId,name,image:authorImg},_id,title,image,category,description} = post
   return (
     <li className='startup-card group'>

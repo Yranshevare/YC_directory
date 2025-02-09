@@ -72,9 +72,9 @@ export default async function page({params}:{params:Promise<{id:string}>}) {
             <ul className='mt-10 card-grid'> 
               {
                 editorPost.select?.map((post:startuptypeCard , i:number) => (
-                  <li className='mt-7' key={i}>
-                    <StartupCard  post = {post}/>
-                  </li>
+                  <div className='mt-7' key={i}>
+                  <StartupCard   post = {post} />
+                  </div>
                 ))
               }
             </ul>
