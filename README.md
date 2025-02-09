@@ -5,14 +5,20 @@ This is my first Next.js project, where I share insights, stories, and updates a
 Built with Next.js, the blog is designed to be fast, SEO-friendly, and responsive, ensuring a smooth experience for users on any device. I’ll be regularly posting articles and updates, so stay tuned as I dive deeper into the exciting world of startups!
 
 Thank you for visiting, and I hope you enjoy reading!
+
+[click here to visit this project](https://yc-directory-official.vercel.app/)
+
+
+
+---
 ## <a name="table">new things i learn</a>
-1. next auth
-2. Sanity
-3. rendering the markdown
-4. parallel fetching
+1. [next auth](#next-auth)
+2. [Sanity](#sanity)
+3. [rendering the markdown](#markdown-in-nextjs)
+4. [parallel fetching](#parallel-fetching)
 
 
-# <a name="next-auth">How to set up next auth:</a>
+# Next auth
 ## 1. install next auth
 ```bash
 npm install next-auth@beta
@@ -372,7 +378,7 @@ const patchPromise = writeClient.patch(id).set({ views: views?.views + 1 }).comm
 
 
 ---
-# rendering the markdown file using markdown-it package
+# Markdown in nextjs
 this package will convert your `md file into the HTML format`
 1. install the package
 ```bash
@@ -437,7 +443,12 @@ ability to fetch multiple resources or data simultaneously, instead of sequentia
 ```
 - `Promise.all()` is a method that accepts an array of promises and returns a single promise.
 
+---
 
+### Shoutout to [JavaScript Mastery!](https://www.youtube.com/@javascriptmastery) 🎉
+
+I just finished my project, and I couldn’t have done it without your incredible tutorial! Your step-by-step guidance made the learning process so much easier and helped me gain the skills I needed. Thanks for sharing your knowledge, making complex topics so accessible and all the hard work you put into it!
+
+Keep up the amazing work! 👏\
 [github](https://github.com/adrianhajdin/yc_directory)\
-[figma](https://www.figma.com/design/TMGW6rLGene3cqHb4Kilz5/Pitch-Startup-App?node-id=62001-4701&t=fnfkCMRamSnARpuP-0)\
-[sanity](https://www.sanity.io/manage/personal/project/pm5mfr1f)
+[tutorial](https://youtu.be/Zq5fmkH0T78?si=srnbRNux9ae32jbs)
